@@ -21,7 +21,7 @@ model.backbone.bottom_up.stem.norm = \
     model.backbone.bottom_up.stages.norm = \
     model.backbone.norm = "SyncBN"
 
-# Using NaiveSyncBatchNorm becase heads may have empty input. That is not supported by
+# Using NaiveSyncBatchNorm because heads may have empty input. That is not supported by
 # torch.nn.SyncBatchNorm. We can remove this after
 # https://github.com/pytorch/pytorch/issues/36530 is fixed.
 model.roi_heads.box_head.conv_norm = \
