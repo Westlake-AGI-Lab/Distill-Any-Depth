@@ -27,7 +27,7 @@ from safetensors.torch import load_file  # 导入 safetensors 库
 # Argument parser
 def argument_parser():
     parser = argparse.ArgumentParser(description="Run single-image depth/surface normal estimation.")
-    parser.add_argument("--arch_name", type=str, default="depthanything-large", choices=['depthanything-large', 'depthanything-base', 'midas'], help="Select a method for inference.")
+    parser.add_argument("--arch_name", type=str, default="depthanything-large", choices=['depthanything-large', 'depthanything-base', 'depthanything-small'], help="Select a method for inference.")
     parser.add_argument("--mode", type=str, default="disparity", choices=['rel_depth', 'metric_depth', 'disparity'], help="Select a method for inference.")
     parser.add_argument("--checkpoint", type=str, default="prs-eth/marigold-v1-0", help="Checkpoint path or hub name.")
     parser.add_argument("--output_dir", type=str, required=True, help="Output directory.")
