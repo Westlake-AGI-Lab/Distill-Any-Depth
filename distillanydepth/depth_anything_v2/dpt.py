@@ -177,7 +177,7 @@ class DPTHead(nn.Module):
         path_1 = self.scratch.refinenet1(path_2, layer_1_rn)
         
         out = self.scratch.output_conv1(path_1)
-        out = F.interpolate(out, (int(patch_h * 14), int(patch_w * 14)), mode="bilinear", align_corners=True)
+        out = F.interpolate(out, (patch_h * 14, patch_w * 14), mode="bilinear", align_corners=True)
         out = self.scratch.output_conv2(out)
         
         return out
@@ -218,10 +218,9 @@ class DepthAnythingV2(nn.Module, PyTorchModelHubMixin):
         depth = self.depth_head(features, patch_h, patch_w)
         # depth = F.interpolate(depth, size=(h, w), mode="bilinear", align_corners=True)
         
-        depth = F.relu(depth)
         # import pdb; pdb.set_trace()
         # return depth.squeeze(1), features[3][0]
-        return depth, features[3][0]
+        return depth
     
     @torch.no_grad()
     def infer_image(self, raw_image, input_size=518):

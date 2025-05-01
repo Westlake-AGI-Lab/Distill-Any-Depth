@@ -135,7 +135,8 @@ class FeatureFusionBlock(nn.Module):
         output = self.resConfUnit2(output)
 
         if (size is None) and (self.size is None):
-            modifier = {"scale_factor": 2}
+            _, _, h, w = output.shape
+            modifier = {"size": (h * 2, w * 2)}
         elif size is None:
             modifier = {"size": self.size}
         else:
